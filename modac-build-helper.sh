@@ -2,7 +2,7 @@
 
 set -e
 
-buildTag="20220408"
+buildTag="20220413"
 
 # Build and push linux/amd64
 GOOS=linux GOARCH=amd64 go build -o deploy/docker/nfs-provisioner ./cmd/nfs-provisioner
@@ -17,7 +17,7 @@ popd
 
 
 # Build and push darwin/arm64
-GOOS=darwin GOARCH=arm64 go build -o deploy/docker/nfs-provisioner ./cmd/nfs-provisioner
+GOOS=linux GOARCH=arm64 go build -o deploy/docker/nfs-provisioner ./cmd/nfs-provisioner
 
 pushd deploy/docker
 docker buildx build \
